@@ -1,35 +1,55 @@
-﻿// ©2023, XYZ School. All rights reserved.
-// Authored by Aleksandr Rybalka (polterageist@gmail.com)
-
-#include <SFML/Graphics.hpp>
-#include <SFML/Audio.hpp>
-
-const std::string RESOURCES_PATH = "Resources/";
+﻿#include "Game.h"
 
 int main()
 {
-	sf::RenderWindow window(sf::VideoMode(330, 400), "SFML works!");
+	// Init random number generator
+	unsigned int seed = (unsigned int)time(nullptr);
+	srand(seed);
 
-	sf::Texture logo;
-	if (!logo.loadFromFile(RESOURCES_PATH + "xyz-logo.png"))
-	{
-		return EXIT_FAILURE;
-	}
-	sf::Sprite logo_sprite(logo);
+	// Init window
+	sf::RenderWindow window(sf::VideoMode(SnakeGame::SCREEN_WIDTH_GAME, SnakeGame::SCREEN_HEIGHT_GAME), "Snake Game");
 
+	// We now use too much memory for stack, so we need to allocate it on heap
+	SnakeGame::Game* game = new SnakeGame::Game();
+	InitGame(*game);
+
+	// Init game clock
+	sf::Clock game_clock;
+	sf::Time lastTime = game_clock.getElapsedTime();
+
+	window.setFramerateLimit(10);
+
+	// Game loop
 	while (window.isOpen())
 	{
-		sf::Event event;
-		while (window.pollEvent(event))
+		HandleWindowEvents(*game, window);
+
+		if (!window.isOpen())
 		{
-			if (event.type == sf::Event::Closed)
-				window.close();
+			break;
 		}
 
-		window.clear();
-		window.draw(logo_sprite);
-		window.display();
+		// Calculate time delta
+		sf::Time currentTime = game_clock.getElapsedTime();
+		float timeDelta = currentTime.asSeconds() - lastTime.asSeconds();
+		lastTime = currentTime;
+		if (UpdateGame(*game, timeDelta))
+		{
+			// Draw everything here
+			// Clear the window first
+			window.clear();
+
+			DrawGame(*game, window);
+
+			// End the current frame, display window contents on screen
+			window.display();
+		} else
+		{
+			window.close();
+		}
 	}
 
-	return 0;
+	ShutdownGame(*game);
+	delete game;
+	game = nullptr;
 }

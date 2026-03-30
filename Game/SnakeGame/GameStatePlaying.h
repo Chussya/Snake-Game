@@ -1,0 +1,40 @@
+#pragma once
+#include <SFML/Graphics.hpp>
+#include "Snake.h"
+#include "Apple.h"
+#include "Sector.h"
+
+namespace SnakeGame
+{
+	struct Game;
+
+	struct GameStatePlayingData
+	{
+		// State data
+
+		int numEatenApples{ 0 };
+		Snake snake;
+		std::vector<Apple> apples;
+		std::vector<std::vector<Sector>> windowSectors;
+
+		// Resources
+
+		sf::Texture appleTexture;
+
+		// Font
+
+		sf::Font font;
+
+		// Text
+
+		sf::Text scoreText;
+		sf::Text movementNote;
+	};
+
+	void HandleGameStatePlayingWindowEvent(GameStatePlayingData& data, Game& game, const sf::Event event);
+
+	void InitGameStatePlaying(GameStatePlayingData& data, Game& game);
+	void DrawGameStatePlaying(GameStatePlayingData& data, Game& game, sf::RenderWindow& window);
+	void UpdateGameStatePlaying(GameStatePlayingData& data, Game& game, float timeDelta);
+	void ShutdownGameStatePlaying(GameStatePlayingData& data, Game& game);
+}
