@@ -5,10 +5,202 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
+    <Filter Include="Headers">
+      <UniqueIdentifier>{a6503eec-ce94-4823-91a1-1d9f5ed866fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{2c3c7bd4-6cb1-4e66-8e6a-2da429772909}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Fonts">
+      <UniqueIdentifier>{38bf44f6-c2e7-4fc7-ab33-dff702f154f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Images">
+      <UniqueIdentifier>{2248aae7-d5fb-44f6-963b-560dca9bf3a3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameMain.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
+    <ClCompile Include="Apple.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Math.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Record.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="UtilBitMask.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="UtilGraphic.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="UtilString.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="GameStatePlaying.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Sector.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Snake.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Apple.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Constants.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Math.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="GameSettings.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Record.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="UtilBitMask.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="UtilGraphic.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="UtilString.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="GameStatePlaying.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Sector.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Snake.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="Resources\Fonts\arial.ttf">
+      <Filter>Resources\Fonts</Filter>
+    </Font>
+    <Font Include="Resources\Fonts\arialbd.ttf">
+      <Filter>Resources\Fonts</Filter>
+    </Font>
+    <Font Include="Resources\Fonts\arialbi.ttf">
+      <Filter>Resources\Fonts</Filter>
+    </Font>
+    <Font Include="Resources\Fonts\ariali.ttf">
+      <Filter>Resources\Fonts</Filter>
+    </Font>
+    <Font Include="Resources\Fonts\ariblk.ttf">
+      <Filter>Resources\Fonts</Filter>
+    </Font>
+    <Font Include="Resources\Fonts\consola.ttf">
+      <Filter>Resources\Fonts</Filter>
+    </Font>
+    <Font Include="Resources\Fonts\consolab.ttf">
+      <Filter>Resources\Fonts</Filter>
+    </Font>
+    <Font Include="Resources\Fonts\consolai.ttf">
+      <Filter>Resources\Fonts</Filter>
+    </Font>
+    <Font Include="Resources\Fonts\consolaz.ttf">
+      <Filter>Resources\Fonts</Filter>
+    </Font>
+    <Font Include="Resources\Fonts\Roboto-Black.ttf">
+      <Filter>Resources\Fonts</Filter>
+    </Font>
+    <Font Include="Resources\Fonts\Roboto-BlackItalic.ttf">
+      <Filter>Resources\Fonts</Filter>
+    </Font>
+    <Font Include="Resources\Fonts\Roboto-Bold.ttf">
+      <Filter>Resources\Fonts</Filter>
+    </Font>
+    <Font Include="Resources\Fonts\Roboto-BoldItalic.ttf">
+      <Filter>Resources\Fonts</Filter>
+    </Font>
+    <Font Include="Resources\Fonts\Roboto-Italic.ttf">
+      <Filter>Resources\Fonts</Filter>
+    </Font>
+    <Font Include="Resources\Fonts\Roboto-Light.ttf">
+      <Filter>Resources\Fonts</Filter>
+    </Font>
+    <Font Include="Resources\Fonts\Roboto-LightItalic.ttf">
+      <Filter>Resources\Fonts</Filter>
+    </Font>
+    <Font Include="Resources\Fonts\Roboto-Medium.ttf">
+      <Filter>Resources\Fonts</Filter>
+    </Font>
+    <Font Include="Resources\Fonts\Roboto-MediumItalic.ttf">
+      <Filter>Resources\Fonts</Filter>
+    </Font>
+    <Font Include="Resources\Fonts\Roboto-Regular.ttf">
+      <Filter>Resources\Fonts</Filter>
+    </Font>
+    <Font Include="Resources\Fonts\Roboto-Thin.ttf">
+      <Filter>Resources\Fonts</Filter>
+    </Font>
+    <Font Include="Resources\Fonts\Roboto-ThinItalic.ttf">
+      <Filter>Resources\Fonts</Filter>
+    </Font>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resources\Images\apple.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Resources\Images\body_bottomleft.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Resources\Images\body_bottomright.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Resources\Images\body_horizontal.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Resources\Images\body_topleft.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Resources\Images\body_topright.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Resources\Images\body_vertical.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Resources\Images\head_down.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Resources\Images\head_left.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Resources\Images\head_right.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Resources\Images\head_up.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Resources\Images\tail_down.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Resources\Images\tail_left.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Resources\Images\tail_right.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Resources\Images\tail_up.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
   </ItemGroup>
 </Project>

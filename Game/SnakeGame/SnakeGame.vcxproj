@@ -158,7 +158,71 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Apple.cpp" />
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameMain.cpp" />
+    <ClCompile Include="GameStatePlaying.cpp" />
+    <ClCompile Include="Math.cpp" />
+    <ClCompile Include="Record.cpp" />
+    <ClCompile Include="Sector.cpp" />
+    <ClCompile Include="Snake.cpp" />
+    <ClCompile Include="UtilBitMask.cpp" />
+    <ClCompile Include="UtilGraphic.cpp" />
+    <ClCompile Include="UtilString.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Apple.h" />
+    <ClInclude Include="Constants.h" />
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="GameSettings.h" />
+    <ClInclude Include="GameStatePlaying.h" />
+    <ClInclude Include="Math.h" />
+    <ClInclude Include="Record.h" />
+    <ClInclude Include="Sector.h" />
+    <ClInclude Include="Snake.h" />
+    <ClInclude Include="UtilBitMask.h" />
+    <ClInclude Include="UtilGraphic.h" />
+    <ClInclude Include="UtilString.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="Resources\Fonts\arial.ttf" />
+    <Font Include="Resources\Fonts\arialbd.ttf" />
+    <Font Include="Resources\Fonts\arialbi.ttf" />
+    <Font Include="Resources\Fonts\ariali.ttf" />
+    <Font Include="Resources\Fonts\ariblk.ttf" />
+    <Font Include="Resources\Fonts\consola.ttf" />
+    <Font Include="Resources\Fonts\consolab.ttf" />
+    <Font Include="Resources\Fonts\consolai.ttf" />
+    <Font Include="Resources\Fonts\consolaz.ttf" />
+    <Font Include="Resources\Fonts\Roboto-Black.ttf" />
+    <Font Include="Resources\Fonts\Roboto-BlackItalic.ttf" />
+    <Font Include="Resources\Fonts\Roboto-Bold.ttf" />
+    <Font Include="Resources\Fonts\Roboto-BoldItalic.ttf" />
+    <Font Include="Resources\Fonts\Roboto-Italic.ttf" />
+    <Font Include="Resources\Fonts\Roboto-Light.ttf" />
+    <Font Include="Resources\Fonts\Roboto-LightItalic.ttf" />
+    <Font Include="Resources\Fonts\Roboto-Medium.ttf" />
+    <Font Include="Resources\Fonts\Roboto-MediumItalic.ttf" />
+    <Font Include="Resources\Fonts\Roboto-Regular.ttf" />
+    <Font Include="Resources\Fonts\Roboto-Thin.ttf" />
+    <Font Include="Resources\Fonts\Roboto-ThinItalic.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resources\Images\apple.png" />
+    <Image Include="Resources\Images\body_bottomleft.png" />
+    <Image Include="Resources\Images\body_bottomright.png" />
+    <Image Include="Resources\Images\body_horizontal.png" />
+    <Image Include="Resources\Images\body_topleft.png" />
+    <Image Include="Resources\Images\body_topright.png" />
+    <Image Include="Resources\Images\body_vertical.png" />
+    <Image Include="Resources\Images\head_down.png" />
+    <Image Include="Resources\Images\head_left.png" />
+    <Image Include="Resources\Images\head_right.png" />
+    <Image Include="Resources\Images\head_up.png" />
+    <Image Include="Resources\Images\tail_down.png" />
+    <Image Include="Resources\Images\tail_left.png" />
+    <Image Include="Resources\Images\tail_right.png" />
+    <Image Include="Resources\Images\tail_up.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
