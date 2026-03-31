@@ -11,6 +11,7 @@ namespace SnakeGame
 	{
 		None = 0,
 		Playing,
+		Complexity,
 		GameOver,
 		Leaderboard,
 		MainMenu,
@@ -53,7 +54,7 @@ namespace SnakeGame
 
 	void InitGame(Game& game);
 	void HandleWindowEvents(Game& game, sf::RenderWindow& window);
-	bool UpdateGame(Game& game, float timeDelta); // Return false if game should be closed
+	bool UpdateGame(Game& game); // Return false if game should be closed
 	void DrawGame(Game& game, sf::RenderWindow& window);
 	void ShutdownGame(Game& game);
 
@@ -69,6 +70,6 @@ namespace SnakeGame
 	void InitGameState(Game& game, GameState& state);
 	void ShutdownGameState(Game& game, GameState& state);
 	void HandleWindowEventGameState(Game& game, GameState& state, sf::Event& event);
-	void UpdateGameState(Game& game, GameState& state, float timeDelta);
+	void UpdateGameState(Game& game, GameState& state);
 	void DrawGameState(Game& game, GameState& state, sf::RenderWindow& window);
 }

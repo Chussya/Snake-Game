@@ -1,0 +1,138 @@
+#include "GameStateMainMenu.h"
+
+#include <cassert>
+
+namespace SnakeGame
+{
+	void HandleGameStateMainMenuWindowEvent(GameStateMainMenuData& data, Game& game, const sf::Event event)
+	{
+		if (event.type == sf::Event::KeyReleased)
+		{
+			if (event.key.code == sf::Keyboard::W)
+			{
+				if (data.it == data.buttons.begin())
+				{
+					data.it = data.buttons.end();
+				}
+				--data.it;
+			} else if (event.key.code == sf::Keyboard::S)
+			{
+				++data.it;
+
+				if (data.it == data.buttons.end())
+				{
+					data.it = data.buttons.begin();
+				}
+			} else if (event.key.code == sf::Keyboard::Enter)
+			{
+				data.it->callFunc(game);
+			}
+		}
+	}
+
+	void InitGameStateMainMenu(GameStateMainMenuData& data, Game& game)
+	{
+		// Init Fonts
+
+		assert(data.font.loadFromFile(RESOURCES_PATH + "Fonts/Roboto-Light.ttf"));
+
+		// Init Texts
+
+		InitText(data.title, "SNAKE GAME", data.font, sf::Color::Yellow, 60);
+		SetTextOrigin(data.title, TextOrigin::Center);
+
+		MenuItem<call> startGame;
+
+		InitMenuItem<call>(
+			startGame,
+			"Start game",
+			data.font,
+			[](Game& game) { SwitchGameState(game, GameStateType::Playing); }
+		);
+		SetTextOrigin(startGame.text, TextOrigin::Center);
+
+		MenuItem<call> complexity;
+
+		InitMenuItem<call>(
+			complexity,
+			"Complexity",
+			data.font,
+			[](Game& game) { SwitchGameState(game, GameStateType::Complexity); }
+		);
+		SetTextOrigin(complexity.text, TextOrigin::Center);
+
+		MenuItem<call> leaderboard;
+
+		InitMenuItem<call>(
+			leaderboard,
+			"Leaderboard",
+			data.font,
+			[](Game& game) { SwitchGameState(game, GameStateType::Leaderboard); }
+		);
+		SetTextOrigin(leaderboard.text, TextOrigin::Center);
+
+		MenuItem<call> options;
+
+		InitMenuItem<call>(
+			options,
+			"Options",
+			data.font,
+			[](Game& game) { SwitchGameState(game, GameStateType::Options); }
+		);
+		SetTextOrigin(options.text, TextOrigin::Center);
+
+		MenuItem<call> exit;
+
+		InitMenuItem<call>(
+			exit,
+			"Exit",
+			data.font,
+			[](Game& game) { SwitchGameState(game, GameStateType::Exit); }
+		);
+		SetTextOrigin(exit.text, TextOrigin::Center);
+
+		data.buttons.push_back(startGame);
+		data.buttons.push_back(complexity);
+		data.buttons.push_back(leaderboard);
+		data.buttons.push_back(options);
+		data.buttons.push_back(exit);
+
+		data.it = data.buttons.begin();
+	}
+
+	void DrawGameStateMainMenu(GameStateMainMenuData& data, Game& game, sf::RenderWindow& window)
+	{
+		float yCoordinate = 30.f;
+
+		data.title.setPosition(window.getSize().x / 2.f, yCoordinate);
+		window.draw(data.title);
+
+		yCoordinate += 100.f;
+
+		for (auto& button : data.buttons)
+		{
+			button.text.setPosition(window.getSize().x / 2.f, yCoordinate);
+			DrawMenuItem(button, window);
+			yCoordinate += 80.f;
+		}
+	}
+
+	void UpdateGameStateMainMenu(GameStateMainMenuData& data, Game& game)
+	{
+		for (auto it = data.buttons.begin(); it != data.buttons.end(); ++it)
+		{
+			if (*it == *data.it)
+			{
+				OnFocus(*it);
+			} else
+			{
+				LostFocus(*it);
+			}
+		}
+	}
+
+	void ShutdownGameStateMainMenu(GameStateMainMenuData& data, Game& game)
+	{
+		// Nothing to do
+	}
+}

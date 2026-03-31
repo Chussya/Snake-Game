@@ -3,7 +3,7 @@
 #include <cassert>
 
 #include "Record.h"
-//#include "GameStateMainMenu.h"
+#include "GameStateMainMenu.h"
 //#include "GameStateLeaderboard.h"
 //#include "GameStateOptions.h"
 #include "GameStatePlaying.h"
@@ -23,8 +23,7 @@ namespace SnakeGame
 		game.gameStateChangeType = GameStateChangeType::None;
 		game.pendingGameStateType = GameStateType::None;
 		game.pendingGameStateIsExclusivelyVisible = false;
-		SwitchGameState(game, GameStateType::Playing);
-		//SwitchGameState(game, GameStateType::MainMenu);
+		SwitchGameState(game, GameStateType::MainMenu);
 	}
 
 	void HandleWindowEvents(Game& game, sf::RenderWindow& window)
@@ -45,7 +44,7 @@ namespace SnakeGame
 		}
 	}
 
-	bool UpdateGame(Game& game, float timeDelta)
+	bool UpdateGame(Game& game)
 	{
 		if (game.gameStateChangeType == GameStateChangeType::Switch)
 		{
@@ -78,7 +77,7 @@ namespace SnakeGame
 
 		if (game.gameStateStack.size() > 0)
 		{
-			UpdateGameState(game, game.gameStateStack.back(), timeDelta);
+			UpdateGameState(game, game.gameStateStack.back());
 			return true;
 		}
 		return false;
@@ -146,8 +145,8 @@ namespace SnakeGame
 		{
 		case GameStateType::MainMenu:
 		{
-			//state.data = new GameStateMainMenuData();
-			//InitGameStateMainMenu(*(GameStateMainMenuData*)state.data, game);
+			state.data = new GameStateMainMenuData();
+			InitGameStateMainMenu(*(GameStateMainMenuData*)state.data, game);
 			break;
 		}
 		case GameStateType::Leaderboard:
@@ -198,8 +197,8 @@ namespace SnakeGame
 		{
 		case GameStateType::MainMenu:
 		{
-			//ShutdownGameStateMainMenu(*(GameStateMainMenuData*)state.data, game);
-			//delete (GameStateMainMenuData*)state.data;
+			ShutdownGameStateMainMenu(*(GameStateMainMenuData*)state.data, game);
+			delete (GameStateMainMenuData*)state.data;
 			break;
 		}
 		case GameStateType::Leaderboard:
@@ -252,7 +251,7 @@ namespace SnakeGame
 		{
 		case GameStateType::MainMenu:
 		{
-			//HandleGameStateMainMenuWindowEvent(*(GameStateMainMenuData*)state.data, game, event);
+			HandleGameStateMainMenuWindowEvent(*(GameStateMainMenuData*)state.data, game, event);
 			break;
 		}
 		case GameStateType::Leaderboard:
@@ -291,13 +290,13 @@ namespace SnakeGame
 		}
 	}
 
-	void UpdateGameState(Game& game, GameState& state, float timeDelta)
+	void UpdateGameState(Game& game, GameState& state)
 	{
 		switch (state.type)
 		{
 		case GameStateType::MainMenu:
 		{
-			//UpdateGameStateMainMenu(*(GameStateMainMenuData*)state.data, game, timeDelta);
+			UpdateGameStateMainMenu(*(GameStateMainMenuData*)state.data, game);
 			break;
 		}
 		case GameStateType::Leaderboard:
@@ -312,7 +311,7 @@ namespace SnakeGame
 		}
 		case GameStateType::Playing:
 		{
-			UpdateGameStatePlaying(*(GameStatePlayingData*)state.data, game, timeDelta);
+			UpdateGameStatePlaying(*(GameStatePlayingData*)state.data, game);
 			break;
 		}
 		case GameStateType::Pause:
@@ -342,7 +341,7 @@ namespace SnakeGame
 		{
 		case GameStateType::MainMenu:
 		{
-			//DrawGameStateMainMenu(*(GameStateMainMenuData*)state.data, game, window);
+			DrawGameStateMainMenu(*(GameStateMainMenuData*)state.data, game, window);
 			break;
 		}
 		case GameStateType::Leaderboard:

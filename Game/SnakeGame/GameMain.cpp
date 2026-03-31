@@ -14,14 +14,15 @@ int main()
 	InitGame(*game);
 
 	// Init game clock
-	sf::Clock game_clock;
-	sf::Time lastTime = game_clock.getElapsedTime();
-
-	window.setFramerateLimit(10);
+	sf::Clock clock;
+	float accumulator = 0.0f;
 
 	// Game loop
 	while (window.isOpen())
 	{
+		sf::Time elapsed = clock.restart();
+		accumulator += elapsed.asSeconds();
+
 		HandleWindowEvents(*game, window);
 
 		if (!window.isOpen())
@@ -30,22 +31,24 @@ int main()
 		}
 
 		// Calculate time delta
-		sf::Time currentTime = game_clock.getElapsedTime();
-		float timeDelta = currentTime.asSeconds() - lastTime.asSeconds();
-		lastTime = currentTime;
-		if (UpdateGame(*game, timeDelta))
-		{
-			// Draw everything here
-			// Clear the window first
-			window.clear();
 
-			DrawGame(*game, window);
-
-			// End the current frame, display window contents on screen
-			window.display();
-		} else
+		while (accumulator >= game->gameSettings.timeInterval)
 		{
-			window.close();
+			if (UpdateGame(*game))
+			{
+				// Draw everything here
+				// Clear the window first
+				window.clear();
+
+				DrawGame(*game, window);
+
+				// End the current frame, display window contents on screen
+				window.display();
+			} else
+			{
+				window.close();
+			}
+			accumulator -= game->gameSettings.timeInterval; // Consume time
 		}
 	}
 

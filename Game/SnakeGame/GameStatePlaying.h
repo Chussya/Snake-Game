@@ -35,6 +35,6 @@ namespace SnakeGame
 
 	void InitGameStatePlaying(GameStatePlayingData& data, Game& game);
 	void DrawGameStatePlaying(GameStatePlayingData& data, Game& game, sf::RenderWindow& window);
-	void UpdateGameStatePlaying(GameStatePlayingData& data, Game& game, float timeDelta);
+	void UpdateGameStatePlaying(GameStatePlayingData& data, Game& game);
 	void ShutdownGameStatePlaying(GameStatePlayingData& data, Game& game);
 }

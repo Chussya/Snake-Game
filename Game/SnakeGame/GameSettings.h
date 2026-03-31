@@ -14,6 +14,7 @@ namespace SnakeGame
 	struct GameSettings
 	{
 		int numApples{ NUM_APPLES };
-		int gameMode = 0;
+		int gameMode{ 0 };
+		float timeInterval{ 0.12f };
 	};
 }

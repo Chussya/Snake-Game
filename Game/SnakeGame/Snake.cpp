@@ -91,13 +91,6 @@ namespace SnakeGame
 		snake.segments.push_back(tail);
 
 		snake.speed = INITIAL_SPEED;
-		//player.acceleration = game.gameSettings.gameMode & static_cast<int>(EGameMode::Acceleration) ? INITIAL_ACCELERATION : 0.f;
-		//player.direction = PlayerDirection::Right;
-
-		//// Init sprite
-		//player.sprite.setTexture(texture);
-		//SetSpriteSize(player.sprite, PLAYER_SIZE, PLAYER_SIZE);
-		//SetSpriteRelativeOrigin(player.sprite, 0.5f, 0.5f);
 	}
 
 	void DrawSnake(Snake& snake, sf::RenderWindow& window)
@@ -111,7 +104,8 @@ namespace SnakeGame
 
 	void UpdateSnake(Snake& snake, std::vector<std::vector<Sector>>& windowSectors)
 	{
-		Position2D toPos, prevSegmentPos;;
+		Position2D toPos, prevSegmentPos;
+
 		// Move other segments:
 		for (auto& segment : snake.segments)
 		{

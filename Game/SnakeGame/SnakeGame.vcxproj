@@ -161,8 +161,10 @@
     <ClCompile Include="Apple.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameMain.cpp" />
+    <ClCompile Include="GameStateMainMenu.cpp" />
     <ClCompile Include="GameStatePlaying.cpp" />
     <ClCompile Include="Math.cpp" />
+    <ClCompile Include="MenuItem.cpp" />
     <ClCompile Include="Record.cpp" />
     <ClCompile Include="Sector.cpp" />
     <ClCompile Include="Snake.cpp" />
@@ -175,8 +177,10 @@
     <ClInclude Include="Constants.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameSettings.h" />
+    <ClInclude Include="GameStateMainMenu.h" />
     <ClInclude Include="GameStatePlaying.h" />
     <ClInclude Include="Math.h" />
+    <ClInclude Include="MenuItem.h" />
     <ClInclude Include="Record.h" />
     <ClInclude Include="Sector.h" />
     <ClInclude Include="Snake.h" />
