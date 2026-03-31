@@ -52,6 +52,12 @@
     <ClCompile Include="Snake.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
+    <ClCompile Include="GameStateMainMenu.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuItem.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Apple.h">
@@ -88,6 +94,12 @@
       <Filter>Headers</Filter>
     </ClInclude>
     <ClInclude Include="Snake.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="GameStateMainMenu.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuItem.h">
       <Filter>Headers</Filter>
     </ClInclude>
   </ItemGroup>

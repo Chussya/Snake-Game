@@ -24,6 +24,7 @@ namespace SnakeGame
 		RightBottom,
 	};
 
-	void InitText(sf::Text& text, std::string s, sf::Font& font, sf::Color colorText, unsigned int charSize);
+	void InitText(sf::Text& text, std::string s, const sf::Font& font, const sf::Color colorText, const unsigned int charSize);
+	void InitText(sf::Text& text, std::string s, const sf::Font& font, const sf::Color colorText, const unsigned int charSize, const Position2D pos);
 	void SetTextOrigin(sf::Text& text, TextOrigin textOrigin);
 }

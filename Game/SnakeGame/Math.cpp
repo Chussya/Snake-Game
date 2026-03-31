@@ -1,5 +1,6 @@
 #include "Math.h"
 
+#include <cassert>
 #include <SFML/Graphics.hpp>
 
 namespace SnakeGame
@@ -24,6 +25,7 @@ namespace SnakeGame
 		{
 			return EPosDirection::Down;
 		}
+		assert(false);
 	}
 
 	bool IsRectanglesCollide(Position2D rect1Pos, Vector2D rect1Size, Position2D rect2Pos, Vector2D rect2Size)

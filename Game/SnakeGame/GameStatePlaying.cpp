@@ -123,7 +123,7 @@ namespace SnakeGame
 		data.movementNote.setPosition(SCREEN_WIDTH_GAME - 1, 0);
 	}
 
-	void UpdateGameStatePlaying(GameStatePlayingData& data, Game& game, float timeDelta)
+	void UpdateGameStatePlaying(GameStatePlayingData& data, Game& game)
 	{
 		// Check player's direction
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && data.snake.direction != SnakeDirection::Down)
