@@ -4,7 +4,7 @@
 
 #include "Record.h"
 #include "GameStateMainMenu.h"
-//#include "GameStateLeaderboard.h"
+#include "GameStateLeaderboard.h"
 //#include "GameStateOptions.h"
 #include "GameStatePlaying.h"
 #include "GameStateComplexity.h"
@@ -17,11 +17,11 @@ namespace SnakeGame
 	void InitGame(Game& game)
 	{
 		// Generate fake records table
-		InitRecord(game.records);
+		InitRecord(game.records, game.gameSettings.playerName);
 
-		game.ptrPlayerScores = &game.records["Player"];
+		game.ptrPlayerScores = &game.records[game.gameSettings.playerName];
 
-		game.gameStateChangeType = GameStateChangeType::None;
+		game.gameStateChangeType = EGameStateChangeType::None;
 		game.pendingGameStateType = EGameStateType::None;
 		game.pendingGameStateIsExclusivelyVisible = false;
 		SwitchGameState(game, EGameStateType::MainMenu);
@@ -47,7 +47,7 @@ namespace SnakeGame
 
 	bool UpdateGame(Game& game)
 	{
-		if (game.gameStateChangeType == GameStateChangeType::Switch)
+		if (game.gameStateChangeType == EGameStateChangeType::Switch)
 		{
 			// Shutdown all game states
 			while (game.gameStateStack.size() > 0)
@@ -55,7 +55,7 @@ namespace SnakeGame
 				ShutdownGameState(game, game.gameStateStack.back());
 				game.gameStateStack.pop_back();
 			}
-		} else if (game.gameStateChangeType == GameStateChangeType::Pop)
+		} else if (game.gameStateChangeType == EGameStateChangeType::Pop)
 		{
 			// Shutdown only current game state
 			if (game.gameStateStack.size() > 0)
@@ -72,7 +72,7 @@ namespace SnakeGame
 			InitGameState(game, game.gameStateStack.back());
 		}
 
-		game.gameStateChangeType = GameStateChangeType::None;
+		game.gameStateChangeType = EGameStateChangeType::None;
 		game.pendingGameStateType = EGameStateType::None;
 		game.pendingGameStateIsExclusivelyVisible = false;
 
@@ -114,7 +114,7 @@ namespace SnakeGame
 			game.gameStateStack.pop_back();
 		}
 
-		game.gameStateChangeType = GameStateChangeType::None;
+		game.gameStateChangeType = EGameStateChangeType::None;
 		game.pendingGameStateType = EGameStateType::None;
 		game.pendingGameStateIsExclusivelyVisible = false;
 	}
@@ -123,21 +123,21 @@ namespace SnakeGame
 	{
 		game.pendingGameStateType = stateType;
 		game.pendingGameStateIsExclusivelyVisible = isExclusivelyVisible;
-		game.gameStateChangeType = GameStateChangeType::Push;
+		game.gameStateChangeType = EGameStateChangeType::Push;
 	}
 
 	void PopGameState(Game& game)
 	{
 		game.pendingGameStateType = EGameStateType::None;
 		game.pendingGameStateIsExclusivelyVisible = false;
-		game.gameStateChangeType = GameStateChangeType::Pop;
+		game.gameStateChangeType = EGameStateChangeType::Pop;
 	}
 
 	void SwitchGameState(Game& game, EGameStateType newState)
 	{
 		game.pendingGameStateType = newState;
 		game.pendingGameStateIsExclusivelyVisible = false;
-		game.gameStateChangeType = GameStateChangeType::Switch;
+		game.gameStateChangeType = EGameStateChangeType::Switch;
 	}
 
 	void InitGameState(Game& game, GameState& state)
@@ -158,8 +158,8 @@ namespace SnakeGame
 		}
 		case EGameStateType::Leaderboard:
 		{
-			//state.data = new GameStateLeaderboardData();
-			//InitGameStateLeaderboard(*(GameStateLeaderboardData*)state.data, game);
+			state.data = new GameStateLeaderboardData();
+			InitGameStateLeaderboard(*(GameStateLeaderboardData*)state.data, game);
 			break;
 		}
 		case EGameStateType::Options:
@@ -216,8 +216,8 @@ namespace SnakeGame
 		}
 		case EGameStateType::Leaderboard:
 		{
-			//ShutdownGameStateLeaderboard(*(GameStateLeaderboardData*)state.data, game);
-			//delete (GameStateLeaderboardData*)state.data;
+			ShutdownGameStateLeaderboard(*(GameStateLeaderboardData*)state.data, game);
+			delete (GameStateLeaderboardData*)state.data;
 			break;
 		}
 		case EGameStateType::Options:
@@ -274,7 +274,7 @@ namespace SnakeGame
 		}
 		case EGameStateType::Leaderboard:
 		{
-			//HandleGameStateLeaderboardWindowEvent(*(GameStateLeaderboardData*)state.data, game, event);
+			HandleGameStateLeaderboardWindowEvent(*(GameStateLeaderboardData*)state.data, game, event);
 			break;
 		}
 		case EGameStateType::Options:
@@ -324,7 +324,7 @@ namespace SnakeGame
 		}
 		case EGameStateType::Leaderboard:
 		{
-			//UpdateGameStateLeaderboard(*(GameStateLeaderboardData*)state.data, game, timeDelta);
+			UpdateGameStateLeaderboard(*(GameStateLeaderboardData*)state.data, game);
 			break;
 		}
 		case EGameStateType::Options:
@@ -374,7 +374,7 @@ namespace SnakeGame
 		}
 		case EGameStateType::Leaderboard:
 		{
-			//DrawGameStateLeaderboard(*(GameStateLeaderboardData*)state.data, game, window);
+			DrawGameStateLeaderboard(*(GameStateLeaderboardData*)state.data, game, window);
 			break;
 		}
 		case EGameStateType::Options:

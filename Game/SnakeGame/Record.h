@@ -12,6 +12,6 @@ namespace SnakeGame
 		int score;
 	};
 
-	void InitRecord(std::unordered_map<std::string, int>& records);
+	void InitRecord(std::unordered_map<std::string, int>& records, const std::string playerName);
 	Records SortByScores(std::unordered_map<std::string, int> records);
 }
