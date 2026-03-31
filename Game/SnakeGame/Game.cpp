@@ -7,6 +7,7 @@
 //#include "GameStateLeaderboard.h"
 //#include "GameStateOptions.h"
 #include "GameStatePlaying.h"
+#include "GameStateComplexity.h"
 //#include "GameStatePause.h"
 //#include "GameStateGameOver.h"
 //#include "GameStateExitDialog.h"
@@ -149,6 +150,12 @@ namespace SnakeGame
 			InitGameStateMainMenu(*(GameStateMainMenuData*)state.data, game);
 			break;
 		}
+		case GameStateType::Complexity:
+		{
+			state.data = new GameStateComplexityData();
+			InitGameStateComplexity(*(GameStateComplexityData*)state.data, game);
+			break;
+		}
 		case GameStateType::Leaderboard:
 		{
 			//state.data = new GameStateLeaderboardData();
@@ -199,6 +206,12 @@ namespace SnakeGame
 		{
 			ShutdownGameStateMainMenu(*(GameStateMainMenuData*)state.data, game);
 			delete (GameStateMainMenuData*)state.data;
+			break;
+		}
+		case GameStateType::Complexity:
+		{
+			ShutdownGameStateComplexity(*(GameStateComplexityData*)state.data, game);
+			delete (GameStateComplexityData*)state.data;
 			break;
 		}
 		case GameStateType::Leaderboard:
@@ -254,6 +267,11 @@ namespace SnakeGame
 			HandleGameStateMainMenuWindowEvent(*(GameStateMainMenuData*)state.data, game, event);
 			break;
 		}
+		case GameStateType::Complexity:
+		{
+			HandleGameStateComplexityWindowEvent(*(GameStateComplexityData*)state.data, game, event);
+			break;
+		}
 		case GameStateType::Leaderboard:
 		{
 			//HandleGameStateLeaderboardWindowEvent(*(GameStateLeaderboardData*)state.data, game, event);
@@ -299,6 +317,11 @@ namespace SnakeGame
 			UpdateGameStateMainMenu(*(GameStateMainMenuData*)state.data, game);
 			break;
 		}
+		case GameStateType::Complexity:
+		{
+			UpdateGameStateComplexity(*(GameStateComplexityData*)state.data, game);
+			break;
+		}
 		case GameStateType::Leaderboard:
 		{
 			//UpdateGameStateLeaderboard(*(GameStateLeaderboardData*)state.data, game, timeDelta);
@@ -342,6 +365,11 @@ namespace SnakeGame
 		case GameStateType::MainMenu:
 		{
 			DrawGameStateMainMenu(*(GameStateMainMenuData*)state.data, game, window);
+			break;
+		}
+		case GameStateType::Complexity:
+		{
+			DrawGameStateComplexity(*(GameStateComplexityData*)state.data, game, window);
 			break;
 		}
 		case GameStateType::Leaderboard:

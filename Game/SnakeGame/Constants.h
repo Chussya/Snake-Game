@@ -25,7 +25,17 @@ namespace SnakeGame
 	const float INITIAL_ACCELERATION = 20.f;
 	const float DELTA_TIME_CORRECT = 800.f;
 	const float PLAYER_SIZE = 20.f;
-	const int NUM_APPLES = 1;
+	const int NUM_APPLES_DEFAULT = 1;
+	const int BONUS_PARADISE = 2;
+	const int BONUS_EASY = 4;
+	const int BONUS_NORMAL = 6;
+	const int BONUS_HARD = 8;
+	const int BONUS_HELL = 10;
+	const float TIME_INTERVAL_PARADISE = 0.15f;
+	const float TIME_INTERVAL_EASY = 0.12f;
+	const float TIME_INTERVAL_NORMAL = 0.9f;
+	const float TIME_INTERVAL_HARD = 0.5f;
+	const float TIME_INTERVAL_HELL = 0.3f;
 	const float APPLE_SIZE = 20.f;
 
 	// Leaderboard
