@@ -39,7 +39,7 @@ namespace SnakeGame
 		// Init Texts
 
 		InitText(data.title, "SNAKE GAME", data.font, sf::Color::Yellow, 60);
-		SetTextOrigin(data.title, TextOrigin::Center);
+		SetTextOrigin(data.title, ETextOrigin::Center);
 
 		MenuItem<call> startGame;
 
@@ -47,9 +47,9 @@ namespace SnakeGame
 			startGame,
 			"Start game",
 			data.font,
-			[](Game& game) { SwitchGameState(game, GameStateType::Playing); }
+			[](Game& game) { SwitchGameState(game, EGameStateType::Playing); }
 		);
-		SetTextOrigin(startGame.text, TextOrigin::Center);
+		SetTextOrigin(startGame.text, ETextOrigin::Center);
 
 		MenuItem<call> complexity;
 
@@ -57,9 +57,9 @@ namespace SnakeGame
 			complexity,
 			"Complexity",
 			data.font,
-			[](Game& game) { SwitchGameState(game, GameStateType::Complexity); }
+			[](Game& game) { SwitchGameState(game, EGameStateType::Complexity); }
 		);
-		SetTextOrigin(complexity.text, TextOrigin::Center);
+		SetTextOrigin(complexity.text, ETextOrigin::Center);
 
 		MenuItem<call> leaderboard;
 
@@ -67,9 +67,9 @@ namespace SnakeGame
 			leaderboard,
 			"Leaderboard",
 			data.font,
-			[](Game& game) { SwitchGameState(game, GameStateType::Leaderboard); }
+			[](Game& game) { SwitchGameState(game, EGameStateType::Leaderboard); }
 		);
-		SetTextOrigin(leaderboard.text, TextOrigin::Center);
+		SetTextOrigin(leaderboard.text, ETextOrigin::Center);
 
 		MenuItem<call> options;
 
@@ -77,9 +77,9 @@ namespace SnakeGame
 			options,
 			"Options",
 			data.font,
-			[](Game& game) { SwitchGameState(game, GameStateType::Options); }
+			[](Game& game) { SwitchGameState(game, EGameStateType::Options); }
 		);
-		SetTextOrigin(options.text, TextOrigin::Center);
+		SetTextOrigin(options.text, ETextOrigin::Center);
 
 		MenuItem<call> exit;
 
@@ -87,9 +87,9 @@ namespace SnakeGame
 			exit,
 			"Exit",
 			data.font,
-			[](Game& game) { SwitchGameState(game, GameStateType::Exit); }
+			[](Game& game) { SwitchGameState(game, EGameStateType::Exit); }
 		);
-		SetTextOrigin(exit.text, TextOrigin::Center);
+		SetTextOrigin(exit.text, ETextOrigin::Center);
 
 		data.buttons.push_back(startGame);
 		data.buttons.push_back(complexity);

@@ -19,31 +19,31 @@ namespace SnakeGame
 		text.setPosition({ pos.x, pos.y });
 	}
 
-	void SetTextOrigin(sf::Text& text, TextOrigin textOrigin)
+	void SetTextOrigin(sf::Text& text, ETextOrigin textOrigin)
 	{
 		sf::FloatRect localRect = text.getLocalBounds();
 
 		switch (textOrigin)
 		{
-		case SnakeGame::TextOrigin::LeftTop:
+		case SnakeGame::ETextOrigin::LeftTop:
 			text.setOrigin(0.f, 0.f);
 			break;
-		case SnakeGame::TextOrigin::MidTop:
+		case SnakeGame::ETextOrigin::MidTop:
 			text.setOrigin(localRect.width / 2.f, 0.f);
 			break;
-		case SnakeGame::TextOrigin::RightTop:
+		case SnakeGame::ETextOrigin::RightTop:
 			text.setOrigin(localRect.width, 0.f);
 			break;
-		case SnakeGame::TextOrigin::Center:
+		case SnakeGame::ETextOrigin::Center:
 			text.setOrigin(localRect.width / 2.f, localRect.height / 2.f);
 			break;
-		case SnakeGame::TextOrigin::LeftBottom:
+		case SnakeGame::ETextOrigin::LeftBottom:
 			text.setOrigin(0.f, localRect.height);
 			break;
-		case SnakeGame::TextOrigin::MidBottom:
+		case SnakeGame::ETextOrigin::MidBottom:
 			text.setOrigin(localRect.width / 2.f, localRect.height);
 			break;
-		case SnakeGame::TextOrigin::RightBottom:
+		case SnakeGame::ETextOrigin::RightBottom:
 			text.setOrigin(localRect.width, localRect.height);
 			break;
 		default:

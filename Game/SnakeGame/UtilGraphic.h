@@ -13,7 +13,7 @@ namespace SnakeGame
 		OnClick = 1 << 1,
 	};
 
-	enum class TextOrigin
+	enum class ETextOrigin
 	{
 		LeftTop = 0,
 		MidTop,
@@ -26,5 +26,5 @@ namespace SnakeGame
 
 	void InitText(sf::Text& text, std::string s, const sf::Font& font, const sf::Color colorText, const unsigned int charSize);
 	void InitText(sf::Text& text, std::string s, const sf::Font& font, const sf::Color colorText, const unsigned int charSize, const Position2D pos);
-	void SetTextOrigin(sf::Text& text, TextOrigin textOrigin);
+	void SetTextOrigin(sf::Text& text, ETextOrigin textOrigin);
 }

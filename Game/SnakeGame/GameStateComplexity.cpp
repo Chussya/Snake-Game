@@ -26,10 +26,10 @@ namespace SnakeGame
 			} else if (event.key.code == sf::Keyboard::Enter)
 			{
 				data.it->callFunc(game);
-				SwitchGameState(game, GameStateType::MainMenu);
+				SwitchGameState(game, EGameStateType::MainMenu);
 			} else if (event.key.code == sf::Keyboard::B)
 			{
-				SwitchGameState(game, GameStateType::MainMenu);
+				SwitchGameState(game, EGameStateType::MainMenu);
 			}
 		}
 	}
@@ -43,7 +43,7 @@ namespace SnakeGame
 		// Init Texts
 
 		InitText(data.title, "COMPLEXITY", data.font, sf::Color::Yellow, 60);
-		SetTextOrigin(data.title, TextOrigin::Center);
+		SetTextOrigin(data.title, ETextOrigin::Center);
 
 		MenuItem<call> paradise;
 
@@ -53,7 +53,7 @@ namespace SnakeGame
 			data.font,
 			[](Game& game) { game.gameSettings.appleBonus = BONUS_PARADISE; game.gameSettings.timeInterval = TIME_INTERVAL_PARADISE; }
 		);
-		SetTextOrigin(paradise.text, TextOrigin::Center);
+		SetTextOrigin(paradise.text, ETextOrigin::Center);
 
 		MenuItem<call> easy;
 
@@ -63,7 +63,7 @@ namespace SnakeGame
 			data.font,
 			[](Game& game) { game.gameSettings.appleBonus = BONUS_EASY; game.gameSettings.timeInterval = TIME_INTERVAL_EASY; }
 		);
-		SetTextOrigin(easy.text, TextOrigin::Center);
+		SetTextOrigin(easy.text, ETextOrigin::Center);
 
 		MenuItem<call> normal;
 
@@ -73,7 +73,7 @@ namespace SnakeGame
 			data.font,
 			[](Game& game) { game.gameSettings.appleBonus = BONUS_NORMAL; game.gameSettings.timeInterval = TIME_INTERVAL_NORMAL; }
 		);
-		SetTextOrigin(normal.text, TextOrigin::Center);
+		SetTextOrigin(normal.text, ETextOrigin::Center);
 
 		MenuItem<call> hard;
 
@@ -83,7 +83,7 @@ namespace SnakeGame
 			data.font,
 			[](Game& game) { game.gameSettings.appleBonus = BONUS_HARD; game.gameSettings.timeInterval = TIME_INTERVAL_HARD; }
 		);
-		SetTextOrigin(hard.text, TextOrigin::Center);
+		SetTextOrigin(hard.text, ETextOrigin::Center);
 
 		MenuItem<call> hell;
 
@@ -93,7 +93,7 @@ namespace SnakeGame
 			data.font,
 			[](Game& game) { game.gameSettings.appleBonus = BONUS_HELL; game.gameSettings.timeInterval = TIME_INTERVAL_HELL; }
 		);
-		SetTextOrigin(hell.text, TextOrigin::Center);
+		SetTextOrigin(hell.text, ETextOrigin::Center);
 
 		data.buttons.push_back(paradise);
 		data.buttons.push_back(easy);

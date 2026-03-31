@@ -14,13 +14,13 @@ namespace SnakeGame
 		{
 			if (event.key.code == sf::Keyboard::Escape)
 			{
-				SwitchGameState(game, GameStateType::MainMenu);
+				SwitchGameState(game, EGameStateType::MainMenu);
 			} else if (event.key.code == sf::Keyboard::B)
 			{
-				SwitchGameState(game, GameStateType::MainMenu);
+				SwitchGameState(game, EGameStateType::MainMenu);
 			} else if (event.key.code == sf::Keyboard::P)
 			{
-				PushGameState(game, GameStateType::Pause, true);
+				PushGameState(game, EGameStateType::Pause, true);
 			}
 			else if (!data.isKeyPressed)
 			{
@@ -60,7 +60,7 @@ namespace SnakeGame
 		InitText(data.scoreText, "SCORES:", data.font, sf::Color::White, 20);
 
 		InitText(data.movementNote, "Use arrows keys for move", data.font, sf::Color::White, 20);
-		SetTextOrigin(data.movementNote, TextOrigin::RightTop);
+		SetTextOrigin(data.movementNote, ETextOrigin::RightTop);
 
 		/// Init window sectors
 		data.windowSectors.resize(SCREEN_HEIGHT_GAME / SECTOR_SIZE);
@@ -155,7 +155,7 @@ namespace SnakeGame
 		// Check borders' collision:
 		if (IsSnakeCollidedBySelf(data.snake) || !IsWorldSector(data.windowSectors, GetHead(data.snake)->pos))
 		{
-			PushGameState(game, GameStateType::GameOver, true);
+			PushGameState(game, EGameStateType::GameOver, true);
 			return;
 		}
 
@@ -165,33 +165,9 @@ namespace SnakeGame
 			if (!apple.isEaten && IsAppleCollidedSnake(apple, GetHead(data.snake)->pos))
 			{
 				data.numEatenApples += game.gameSettings.appleBonus;
-				//data.sfx.eatSound.play();
 
-				// If not infinity mode - finish game
-				//if (!IsBitMaskOn(game.gameSettings.gameMode, static_cast<int>(EGameMode::ApplesInfinity))
-				//	&& game.gameSettings.numApples == data.numEatenApples)
-				//{
-				//	PushGameState(game, GameStateType::GameOver, true);
-				//	return;
-				//}
-
-				// Respawn apple
-				//if (IsBitMaskOn(game.gameSettings.gameMode, static_cast<int>(EGameMode::ApplesInfinity)))
-				//{
-					RespawnApple(apple, data.windowSectors);
-					GrewUpSnake(data.snake);
-				//}
-				//// Mark apple as eaten
-				//else
-				//{
-				//	RemoveApple(apple);
-				//}
-
-				//// Speed up player
-				//if (IsBitMaskOn(game.gameSettings.gameMode, static_cast<int>(EGameMode::Acceleration)))
-				//{
-				//	SpeedUpPlayer(data.player, timeDelta);
-				//}
+				RespawnApple(apple, data.windowSectors);
+				GrewUpSnake(data.snake);
 			}
 		}
 
