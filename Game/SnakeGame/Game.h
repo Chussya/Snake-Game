@@ -7,7 +7,7 @@
 
 namespace SnakeGame
 {
-	enum class GameStateType
+	enum class EGameStateType
 	{
 		None = 0,
 		Playing,
@@ -23,7 +23,7 @@ namespace SnakeGame
 
 	struct GameState
 	{
-		GameStateType type = GameStateType::None;
+		EGameStateType type = EGameStateType::None;
 		void* data = nullptr;
 		bool isExclusivelyVisible = false;
 	};
@@ -44,7 +44,7 @@ namespace SnakeGame
 
 		std::vector<GameState> gameStateStack;
 		GameStateChangeType gameStateChangeType = GameStateChangeType::None;
-		GameStateType pendingGameStateType = GameStateType::None;
+		EGameStateType pendingGameStateType = EGameStateType::None;
 		bool pendingGameStateIsExclusivelyVisible = false;
 
 		GameSettings gameSettings;
@@ -59,13 +59,13 @@ namespace SnakeGame
 	void ShutdownGame(Game& game);
 
 	// Add new game state on top of the stack
-	void PushGameState(Game& game, GameStateType stateType, bool isExclusivelyVisible);
+	void PushGameState(Game& game, EGameStateType stateType, bool isExclusivelyVisible);
 
 	// Remove current game state from the stack
 	void PopGameState(Game& game);
 
 	// Remove all game states from the stack and add new one
-	void SwitchGameState(Game& game, GameStateType newState);
+	void SwitchGameState(Game& game, EGameStateType newState);
 
 	void InitGameState(Game& game, GameState& state);
 	void ShutdownGameState(Game& game, GameState& state);

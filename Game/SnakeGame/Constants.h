@@ -33,9 +33,9 @@ namespace SnakeGame
 	const int BONUS_HELL = 10;
 	const float TIME_INTERVAL_PARADISE = 0.15f;
 	const float TIME_INTERVAL_EASY = 0.12f;
-	const float TIME_INTERVAL_NORMAL = 0.9f;
-	const float TIME_INTERVAL_HARD = 0.5f;
-	const float TIME_INTERVAL_HELL = 0.3f;
+	const float TIME_INTERVAL_NORMAL = 0.09f;
+	const float TIME_INTERVAL_HARD = 0.05f;
+	const float TIME_INTERVAL_HELL = 0.03f;
 	const float APPLE_SIZE = 20.f;
 
 	// Leaderboard

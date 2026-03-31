@@ -22,9 +22,9 @@ namespace SnakeGame
 		game.ptrPlayerScores = &game.records["Player"];
 
 		game.gameStateChangeType = GameStateChangeType::None;
-		game.pendingGameStateType = GameStateType::None;
+		game.pendingGameStateType = EGameStateType::None;
 		game.pendingGameStateIsExclusivelyVisible = false;
-		SwitchGameState(game, GameStateType::MainMenu);
+		SwitchGameState(game, EGameStateType::MainMenu);
 	}
 
 	void HandleWindowEvents(Game& game, sf::RenderWindow& window)
@@ -66,14 +66,14 @@ namespace SnakeGame
 		}
 
 		// Initialize new game state if needed
-		if (game.pendingGameStateType != GameStateType::None && game.pendingGameStateType != GameStateType::Exit)
+		if (game.pendingGameStateType != EGameStateType::None && game.pendingGameStateType != EGameStateType::Exit)
 		{
 			game.gameStateStack.push_back({ game.pendingGameStateType, nullptr, game.pendingGameStateIsExclusivelyVisible });
 			InitGameState(game, game.gameStateStack.back());
 		}
 
 		game.gameStateChangeType = GameStateChangeType::None;
-		game.pendingGameStateType = GameStateType::None;
+		game.pendingGameStateType = EGameStateType::None;
 		game.pendingGameStateIsExclusivelyVisible = false;
 
 		if (game.gameStateStack.size() > 0)
@@ -115,11 +115,11 @@ namespace SnakeGame
 		}
 
 		game.gameStateChangeType = GameStateChangeType::None;
-		game.pendingGameStateType = GameStateType::None;
+		game.pendingGameStateType = EGameStateType::None;
 		game.pendingGameStateIsExclusivelyVisible = false;
 	}
 
-	void PushGameState(Game& game, GameStateType stateType, bool isExclusivelyVisible)
+	void PushGameState(Game& game, EGameStateType stateType, bool isExclusivelyVisible)
 	{
 		game.pendingGameStateType = stateType;
 		game.pendingGameStateIsExclusivelyVisible = isExclusivelyVisible;
@@ -128,12 +128,12 @@ namespace SnakeGame
 
 	void PopGameState(Game& game)
 	{
-		game.pendingGameStateType = GameStateType::None;
+		game.pendingGameStateType = EGameStateType::None;
 		game.pendingGameStateIsExclusivelyVisible = false;
 		game.gameStateChangeType = GameStateChangeType::Pop;
 	}
 
-	void SwitchGameState(Game& game, GameStateType newState)
+	void SwitchGameState(Game& game, EGameStateType newState)
 	{
 		game.pendingGameStateType = newState;
 		game.pendingGameStateIsExclusivelyVisible = false;
@@ -144,49 +144,49 @@ namespace SnakeGame
 	{
 		switch (state.type)
 		{
-		case GameStateType::MainMenu:
+		case EGameStateType::MainMenu:
 		{
 			state.data = new GameStateMainMenuData();
 			InitGameStateMainMenu(*(GameStateMainMenuData*)state.data, game);
 			break;
 		}
-		case GameStateType::Complexity:
+		case EGameStateType::Complexity:
 		{
 			state.data = new GameStateComplexityData();
 			InitGameStateComplexity(*(GameStateComplexityData*)state.data, game);
 			break;
 		}
-		case GameStateType::Leaderboard:
+		case EGameStateType::Leaderboard:
 		{
 			//state.data = new GameStateLeaderboardData();
 			//InitGameStateLeaderboard(*(GameStateLeaderboardData*)state.data, game);
 			break;
 		}
-		case GameStateType::Options:
+		case EGameStateType::Options:
 		{
 			//state.data = new GameStateOptionsData();
 			//InitGameStateOptions(*(GameStateOptionsData*)state.data, game);
 			break;
 		}
-		case GameStateType::Playing:
+		case EGameStateType::Playing:
 		{
 			state.data = new GameStatePlayingData();
 			InitGameStatePlaying(*(GameStatePlayingData*)state.data, game);
 			break;
 		}
-		case GameStateType::Pause:
+		case EGameStateType::Pause:
 		{
 			//state.data = new GameStatePauseData();
 			//InitGameStatePause(*(GameStatePauseData*)state.data, game);
 			break;
 		}
-		case GameStateType::GameOver:
+		case EGameStateType::GameOver:
 		{
 			//state.data = new GameStateGameOverData();
 			//InitGameStateGameOver(*(GameStateGameOverData*)state.data, game);
 			break;
 		}
-		case GameStateType::ExitDialog:
+		case EGameStateType::ExitDialog:
 		{
 			//state.data = new GameStateExitDialogData();
 			//InitGameStateExitDialog(*(GameStateExitDialogData*)state.data, game);
@@ -202,49 +202,49 @@ namespace SnakeGame
 	{
 		switch (state.type)
 		{
-		case GameStateType::MainMenu:
+		case EGameStateType::MainMenu:
 		{
 			ShutdownGameStateMainMenu(*(GameStateMainMenuData*)state.data, game);
 			delete (GameStateMainMenuData*)state.data;
 			break;
 		}
-		case GameStateType::Complexity:
+		case EGameStateType::Complexity:
 		{
 			ShutdownGameStateComplexity(*(GameStateComplexityData*)state.data, game);
 			delete (GameStateComplexityData*)state.data;
 			break;
 		}
-		case GameStateType::Leaderboard:
+		case EGameStateType::Leaderboard:
 		{
 			//ShutdownGameStateLeaderboard(*(GameStateLeaderboardData*)state.data, game);
 			//delete (GameStateLeaderboardData*)state.data;
 			break;
 		}
-		case GameStateType::Options:
+		case EGameStateType::Options:
 		{
 			//ShutdownGameStateOptions(*(GameStateOptionsData*)state.data, game);
 			//delete (GameStateOptionsData*)state.data;
 			break;
 		}
-		case GameStateType::Playing:
+		case EGameStateType::Playing:
 		{
 			ShutdownGameStatePlaying(*(GameStatePlayingData*)state.data, game);
 			delete (GameStatePlayingData*)state.data;
 			break;
 		}
-		case GameStateType::Pause:
+		case EGameStateType::Pause:
 		{
 			//ShutdownGameStatePause(*(GameStatePauseData*)state.data, game);
 			//delete (GameStatePauseData*)state.data;
 			break;
 		}
-		case GameStateType::GameOver:
+		case EGameStateType::GameOver:
 		{
 			//ShutdownGameStateGameOver(*(GameStateGameOverData*)state.data, game);
 			//delete (GameStateGameOverData*)state.data;
 			break;
 		}
-		case GameStateType::ExitDialog:
+		case EGameStateType::ExitDialog:
 		{
 			//ShutdownGameStateExitDialog(*(GameStateExitDialogData*)state.data, game);
 			//delete (GameStateExitDialogData*)state.data;
@@ -262,42 +262,42 @@ namespace SnakeGame
 	{
 		switch (state.type)
 		{
-		case GameStateType::MainMenu:
+		case EGameStateType::MainMenu:
 		{
 			HandleGameStateMainMenuWindowEvent(*(GameStateMainMenuData*)state.data, game, event);
 			break;
 		}
-		case GameStateType::Complexity:
+		case EGameStateType::Complexity:
 		{
 			HandleGameStateComplexityWindowEvent(*(GameStateComplexityData*)state.data, game, event);
 			break;
 		}
-		case GameStateType::Leaderboard:
+		case EGameStateType::Leaderboard:
 		{
 			//HandleGameStateLeaderboardWindowEvent(*(GameStateLeaderboardData*)state.data, game, event);
 			break;
 		}
-		case GameStateType::Options:
+		case EGameStateType::Options:
 		{
 			//HandleGameStateOptionsWindowEvent(*(GameStateOptionsData*)state.data, game, event);
 			break;
 		}
-		case GameStateType::Playing:
+		case EGameStateType::Playing:
 		{
 			HandleGameStatePlayingWindowEvent(*(GameStatePlayingData*)state.data, game, event);
 			break;
 		}
-		case GameStateType::Pause:
+		case EGameStateType::Pause:
 		{
 			//HandleGameStatePauseWindowEvent(*(GameStatePauseData*)state.data, game, event);
 			break;
 		}
-		case GameStateType::GameOver:
+		case EGameStateType::GameOver:
 		{
 			//HandleGameStateGameOverWindowEvent(*(GameStateGameOverData*)state.data, game, event);
 			break;
 		}
-		case GameStateType::ExitDialog:
+		case EGameStateType::ExitDialog:
 		{
 			//HandleGameStateExitDialogWindowEvent(*(GameStateExitDialogData*)state.data, game, event);
 			break;
@@ -312,42 +312,42 @@ namespace SnakeGame
 	{
 		switch (state.type)
 		{
-		case GameStateType::MainMenu:
+		case EGameStateType::MainMenu:
 		{
 			UpdateGameStateMainMenu(*(GameStateMainMenuData*)state.data, game);
 			break;
 		}
-		case GameStateType::Complexity:
+		case EGameStateType::Complexity:
 		{
 			UpdateGameStateComplexity(*(GameStateComplexityData*)state.data, game);
 			break;
 		}
-		case GameStateType::Leaderboard:
+		case EGameStateType::Leaderboard:
 		{
 			//UpdateGameStateLeaderboard(*(GameStateLeaderboardData*)state.data, game, timeDelta);
 			break;
 		}
-		case GameStateType::Options:
+		case EGameStateType::Options:
 		{
 			//UpdateGameStateOptions(*(GameStateOptionsData*)state.data, game, timeDelta);
 			break;
 		}
-		case GameStateType::Playing:
+		case EGameStateType::Playing:
 		{
 			UpdateGameStatePlaying(*(GameStatePlayingData*)state.data, game);
 			break;
 		}
-		case GameStateType::Pause:
+		case EGameStateType::Pause:
 		{
 			//UpdateGameStatePause(*(GameStatePauseData*)state.data, game, timeDelta);
 			break;
 		}
-		case GameStateType::GameOver:
+		case EGameStateType::GameOver:
 		{
 			//UpdateGameStateGameOver(*(GameStateGameOverData*)state.data, game, timeDelta);
 			break;
 		}
-		case GameStateType::ExitDialog:
+		case EGameStateType::ExitDialog:
 		{
 			//UpdateGameStateExitDialog(*(GameStateExitDialogData*)state.data, game, timeDelta);
 			break;
@@ -362,42 +362,42 @@ namespace SnakeGame
 	{
 		switch (state.type)
 		{
-		case GameStateType::MainMenu:
+		case EGameStateType::MainMenu:
 		{
 			DrawGameStateMainMenu(*(GameStateMainMenuData*)state.data, game, window);
 			break;
 		}
-		case GameStateType::Complexity:
+		case EGameStateType::Complexity:
 		{
 			DrawGameStateComplexity(*(GameStateComplexityData*)state.data, game, window);
 			break;
 		}
-		case GameStateType::Leaderboard:
+		case EGameStateType::Leaderboard:
 		{
 			//DrawGameStateLeaderboard(*(GameStateLeaderboardData*)state.data, game, window);
 			break;
 		}
-		case GameStateType::Options:
+		case EGameStateType::Options:
 		{
 			//DrawGameStateOptions(*(GameStateOptionsData*)state.data, game, window);
 			break;
 		}
-		case GameStateType::Playing:
+		case EGameStateType::Playing:
 		{
 			DrawGameStatePlaying(*(GameStatePlayingData*)state.data, game, window);
 			break;
 		}
-		case GameStateType::Pause:
+		case EGameStateType::Pause:
 		{
 			//DrawGameStatePause(*(GameStatePauseData*)state.data, game, window);
 			break;
 		}
-		case GameStateType::GameOver:
+		case EGameStateType::GameOver:
 		{
 			//DrawGameStateGameOver(*(GameStateGameOverData*)state.data, game, window);
 			break;
 		}
-		case GameStateType::ExitDialog:
+		case EGameStateType::ExitDialog:
 		{
 			//DrawGameStateExitDialog(*(GameStateExitDialogData*)state.data, game, window);
 			break;
