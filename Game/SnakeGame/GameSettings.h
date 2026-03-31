@@ -13,6 +13,8 @@ namespace SnakeGame
 
 	struct GameSettings
 	{
+		std::string playerName{ "XYZ" };
+
 		int numApples{ NUM_APPLES_DEFAULT };
 		int appleBonus{ BONUS_PARADISE };
 		float timeInterval{ TIME_INTERVAL_PARADISE };

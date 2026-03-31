@@ -162,6 +162,7 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameMain.cpp" />
     <ClCompile Include="GameStateComplexity.cpp" />
+    <ClCompile Include="GameStateLeaderboard.cpp" />
     <ClCompile Include="GameStateMainMenu.cpp" />
     <ClCompile Include="GameStatePlaying.cpp" />
     <ClCompile Include="Math.cpp" />
@@ -179,6 +180,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameSettings.h" />
     <ClInclude Include="GameStateComplexity.h" />
+    <ClInclude Include="GameStateLeaderboard.h" />
     <ClInclude Include="GameStateMainMenu.h" />
     <ClInclude Include="GameStatePlaying.h" />
     <ClInclude Include="Math.h" />

@@ -28,7 +28,7 @@ namespace SnakeGame
 		bool isExclusivelyVisible = false;
 	};
 
-	enum class GameStateChangeType
+	enum class EGameStateChangeType
 	{
 		None,
 		Push,
@@ -43,7 +43,7 @@ namespace SnakeGame
 		int* ptrPlayerScores{ nullptr };
 
 		std::vector<GameState> gameStateStack;
-		GameStateChangeType gameStateChangeType = GameStateChangeType::None;
+		EGameStateChangeType gameStateChangeType = EGameStateChangeType::None;
 		EGameStateType pendingGameStateType = EGameStateType::None;
 		bool pendingGameStateIsExclusivelyVisible = false;
 
