@@ -12,6 +12,7 @@ namespace SnakeGame
 	{
 		// State data
 
+		bool isKeyPressed{ false };
 		int numEatenApples{ 0 };
 		Snake snake;
 		std::vector<Apple> apples;

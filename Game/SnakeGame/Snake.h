@@ -8,7 +8,7 @@
 
 namespace SnakeGame
 {
-	enum class SnakeDirection
+	enum class ESnakeDirection
 	{
 		Right = 90,
 		Up = 0,
@@ -24,12 +24,10 @@ namespace SnakeGame
 
 	struct Snake
 	{
-		float speed;
-
 		sf::Texture tt;
 		std::list<SnakeSegment> segments;
 		std::vector<sf::Texture> textures;
-		SnakeDirection direction;
+		ESnakeDirection direction;
 	};
 
 	struct Game;

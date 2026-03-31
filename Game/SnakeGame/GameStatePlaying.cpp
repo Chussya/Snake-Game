@@ -10,14 +10,37 @@ namespace SnakeGame
 {
 	void HandleGameStatePlayingWindowEvent(GameStatePlayingData& data, Game& game, const sf::Event event)
 	{
-		if (event.type == sf::Event::KeyReleased)
+		if (event.type == sf::Event::KeyPressed)
 		{
 			if (event.key.code == sf::Keyboard::Escape)
 			{
-				PushGameState(game, GameStateType::ExitDialog, true);
+				SwitchGameState(game, GameStateType::MainMenu);
+			} else if (event.key.code == sf::Keyboard::B)
+			{
+				SwitchGameState(game, GameStateType::MainMenu);
 			} else if (event.key.code == sf::Keyboard::P)
 			{
 				PushGameState(game, GameStateType::Pause, true);
+			}
+			else if (!data.isKeyPressed)
+			{
+				if (event.key.code == sf::Keyboard::Up && data.snake.direction != ESnakeDirection::Down)
+				{
+					data.snake.direction = ESnakeDirection::Up;
+					data.isKeyPressed = true;
+				} else if (event.key.code == sf::Keyboard::Right && data.snake.direction != ESnakeDirection::Left)
+				{
+					data.snake.direction = ESnakeDirection::Right;
+					data.isKeyPressed = true;
+				} else if (event.key.code == sf::Keyboard::Down && data.snake.direction != ESnakeDirection::Up)
+				{
+					data.snake.direction = ESnakeDirection::Down;
+					data.isKeyPressed = true;
+				} else if (event.key.code == sf::Keyboard::Left && data.snake.direction != ESnakeDirection::Right)
+				{
+					data.snake.direction = ESnakeDirection::Left;
+					data.isKeyPressed = true;
+				}
 			}
 		}
 	}
@@ -98,6 +121,7 @@ namespace SnakeGame
 
 	void DrawGameStatePlaying(GameStatePlayingData& data, Game& game, sf::RenderWindow& window)
 	{
+		data.isKeyPressed = false;
 		// Sectors
 		for (auto rows : data.windowSectors)
 		{
@@ -125,21 +149,6 @@ namespace SnakeGame
 
 	void UpdateGameStatePlaying(GameStatePlayingData& data, Game& game)
 	{
-		// Check player's direction
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && data.snake.direction != SnakeDirection::Down)
-		{
-			data.snake.direction = SnakeDirection::Up;
-		} else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && data.snake.direction != SnakeDirection::Left)
-		{
-			data.snake.direction = SnakeDirection::Right;
-		} else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && data.snake.direction != SnakeDirection::Up)
-		{
-			data.snake.direction = SnakeDirection::Down;
-		} else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && data.snake.direction != SnakeDirection::Right)
-		{
-			data.snake.direction = SnakeDirection::Left;
-		}
-
 		// Update player
 		UpdateSnake(data.snake, data.windowSectors);
 
@@ -155,7 +164,7 @@ namespace SnakeGame
 		{
 			if (!apple.isEaten && IsAppleCollidedSnake(apple, GetHead(data.snake)->pos))
 			{
-				++data.numEatenApples;
+				data.numEatenApples += game.gameSettings.appleBonus;
 				//data.sfx.eatSound.play();
 
 				// If not infinity mode - finish game

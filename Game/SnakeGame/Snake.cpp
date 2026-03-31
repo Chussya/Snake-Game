@@ -89,8 +89,6 @@ namespace SnakeGame
 		snake.segments.push_back(head);
 		snake.segments.push_back(body);
 		snake.segments.push_back(tail);
-
-		snake.speed = INITIAL_SPEED;
 	}
 
 	void DrawSnake(Snake& snake, sf::RenderWindow& window)
@@ -116,23 +114,23 @@ namespace SnakeGame
 				// Move head:
 				switch (snake.direction)
 				{
-				case SnakeDirection::Right: {
-					segment.pos.x += snake.speed;
+				case ESnakeDirection::Right: {
+					segment.pos.x += SECTOR_SIZE;
 					segment.sprite.setTexture(snake.textures[3]);
 					break;
 				}
-				case SnakeDirection::Up: {
-					segment.pos.y -= snake.speed;
+				case ESnakeDirection::Up: {
+					segment.pos.y -= SECTOR_SIZE;
 					segment.sprite.setTexture(snake.textures[0]);
 					break;
 				}
-				case SnakeDirection::Left: {
-					segment.pos.x -= snake.speed;
+				case ESnakeDirection::Left: {
+					segment.pos.x -= SECTOR_SIZE;
 					segment.sprite.setTexture(snake.textures[2]);
 					break;
 				}
-				case SnakeDirection::Down: {
-					segment.pos.y += snake.speed;
+				case ESnakeDirection::Down: {
+					segment.pos.y += SECTOR_SIZE;
 					segment.sprite.setTexture(snake.textures[1]);
 					break;
 				}
