@@ -6,6 +6,8 @@ namespace SnakeGame
 {
 	struct GameStateLeaderboardData
 	{
+		const int maxRecords{ 10 };
+
 		/// Fonts
 
 		sf::Font font;

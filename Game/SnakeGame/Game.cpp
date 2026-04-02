@@ -9,7 +9,7 @@
 #include "GameStatePlaying.h"
 #include "GameStateComplexity.h"
 //#include "GameStatePause.h"
-//#include "GameStateGameOver.h"
+#include "GameStateGameOver.h"
 //#include "GameStateExitDialog.h"
 
 namespace SnakeGame
@@ -182,8 +182,8 @@ namespace SnakeGame
 		}
 		case EGameStateType::GameOver:
 		{
-			//state.data = new GameStateGameOverData();
-			//InitGameStateGameOver(*(GameStateGameOverData*)state.data, game);
+			state.data = new GameStateGameOverData();
+			InitGameStateGameOver(*(GameStateGameOverData*)state.data, game);
 			break;
 		}
 		case EGameStateType::ExitDialog:
@@ -240,8 +240,8 @@ namespace SnakeGame
 		}
 		case EGameStateType::GameOver:
 		{
-			//ShutdownGameStateGameOver(*(GameStateGameOverData*)state.data, game);
-			//delete (GameStateGameOverData*)state.data;
+			ShutdownGameStateGameOver(*(GameStateGameOverData*)state.data, game);
+			delete (GameStateGameOverData*)state.data;
 			break;
 		}
 		case EGameStateType::ExitDialog:
@@ -294,7 +294,7 @@ namespace SnakeGame
 		}
 		case EGameStateType::GameOver:
 		{
-			//HandleGameStateGameOverWindowEvent(*(GameStateGameOverData*)state.data, game, event);
+			HandleGameStateGameOverWindowEvent(*(GameStateGameOverData*)state.data, game, event);
 			break;
 		}
 		case EGameStateType::ExitDialog:
@@ -344,7 +344,7 @@ namespace SnakeGame
 		}
 		case EGameStateType::GameOver:
 		{
-			//UpdateGameStateGameOver(*(GameStateGameOverData*)state.data, game, timeDelta);
+			UpdateGameStateGameOver(*(GameStateGameOverData*)state.data, game);
 			break;
 		}
 		case EGameStateType::ExitDialog:
@@ -394,7 +394,7 @@ namespace SnakeGame
 		}
 		case EGameStateType::GameOver:
 		{
-			//DrawGameStateGameOver(*(GameStateGameOverData*)state.data, game, window);
+			DrawGameStateGameOver(*(GameStateGameOverData*)state.data, game, window);
 			break;
 		}
 		case EGameStateType::ExitDialog:

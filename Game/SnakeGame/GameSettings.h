@@ -13,7 +13,7 @@ namespace SnakeGame
 
 	struct GameSettings
 	{
-		std::string playerName{ "XYZ" };
+		std::string playerName{ DEFAULT_PLAYER_NAME };
 
 		int numApples{ NUM_APPLES_DEFAULT };
 		int appleBonus{ BONUS_PARADISE };

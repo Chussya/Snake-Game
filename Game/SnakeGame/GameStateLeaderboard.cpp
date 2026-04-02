@@ -13,7 +13,7 @@ namespace SnakeGame
 	{
 		if (event.type == sf::Event::KeyReleased)
 		{
-			if (event.key.code == sf::Keyboard::Escape)
+			if (event.key.code == sf::Keyboard::B || event.key.code == sf::Keyboard::Escape)
 			{
 				SwitchGameState(game, EGameStateType::MainMenu);
 			}
@@ -34,6 +34,11 @@ namespace SnakeGame
 
 		// Sort records
 		Records records = SortByScores(game.records);
+
+		if (records.size() > data.maxRecords)
+		{
+			records.resize(data.maxRecords);
+		}
 
 		// Leaderboard definition
 		std::string tableOfLeaders = "";
@@ -60,7 +65,7 @@ namespace SnakeGame
 	void DrawGameStateLeaderboard(GameStateLeaderboardData& data, Game& game, sf::RenderWindow& window)
 	{
 		// Set position
-		data.title.setPosition(SCREEN_WIDTH_GAME / 2, 100);
+		data.title.setPosition(SCREEN_WIDTH_GAME / 2, 30.f);
 		data.leaderBoardText.setPosition(SCREEN_WIDTH_GAME / 2, SCREEN_HEIGHT_GAME / 2);
 
 		// Draw game over window

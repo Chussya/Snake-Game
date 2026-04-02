@@ -47,6 +47,7 @@ namespace SnakeGame
 			startGame,
 			"Start game",
 			data.font,
+			40,
 			[](Game& game) { SwitchGameState(game, EGameStateType::Playing); }
 		);
 		SetTextOrigin(startGame.text, ETextOrigin::Center);
@@ -57,6 +58,7 @@ namespace SnakeGame
 			complexity,
 			"Complexity",
 			data.font,
+			40,
 			[](Game& game) { SwitchGameState(game, EGameStateType::Complexity); }
 		);
 		SetTextOrigin(complexity.text, ETextOrigin::Center);
@@ -67,6 +69,7 @@ namespace SnakeGame
 			leaderboard,
 			"Leaderboard",
 			data.font,
+			40,
 			[](Game& game) { SwitchGameState(game, EGameStateType::Leaderboard); }
 		);
 		SetTextOrigin(leaderboard.text, ETextOrigin::Center);
@@ -77,6 +80,7 @@ namespace SnakeGame
 			options,
 			"Options",
 			data.font,
+			40,
 			[](Game& game) { SwitchGameState(game, EGameStateType::Options); }
 		);
 		SetTextOrigin(options.text, ETextOrigin::Center);
@@ -87,6 +91,7 @@ namespace SnakeGame
 			exit,
 			"Exit",
 			data.font,
+			40,
 			[](Game& game) { SwitchGameState(game, EGameStateType::Exit); }
 		);
 		SetTextOrigin(exit.text, ETextOrigin::Center);
