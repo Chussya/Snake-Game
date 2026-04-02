@@ -24,19 +24,19 @@ namespace SnakeGame
 			}
 			else if (!data.isKeyPressed)
 			{
-				if (event.key.code == sf::Keyboard::Up && data.snake.direction != ESnakeDirection::Down)
+				if (event.key.code == sf::Keyboard::W && data.snake.direction != ESnakeDirection::Down)
 				{
 					data.snake.direction = ESnakeDirection::Up;
 					data.isKeyPressed = true;
-				} else if (event.key.code == sf::Keyboard::Right && data.snake.direction != ESnakeDirection::Left)
+				} else if (event.key.code == sf::Keyboard::D && data.snake.direction != ESnakeDirection::Left)
 				{
 					data.snake.direction = ESnakeDirection::Right;
 					data.isKeyPressed = true;
-				} else if (event.key.code == sf::Keyboard::Down && data.snake.direction != ESnakeDirection::Up)
+				} else if (event.key.code == sf::Keyboard::S && data.snake.direction != ESnakeDirection::Up)
 				{
 					data.snake.direction = ESnakeDirection::Down;
 					data.isKeyPressed = true;
-				} else if (event.key.code == sf::Keyboard::Left && data.snake.direction != ESnakeDirection::Right)
+				} else if (event.key.code == sf::Keyboard::A && data.snake.direction != ESnakeDirection::Right)
 				{
 					data.snake.direction = ESnakeDirection::Left;
 					data.isKeyPressed = true;

@@ -17,7 +17,7 @@ namespace SnakeGame
 	{
 		Records vRecords(records.begin(), records.end());
 
-		std::sort(vRecords.begin(), vRecords.end());
+		std::sort(vRecords.begin(), vRecords.end(), [](std::pair<std::string, int> record1, std::pair<std::string, int> record2) { return record1.second > record2.second; });
 
 		return vRecords;
 	}

@@ -51,6 +51,7 @@ namespace SnakeGame
 			paradise,
 			"Paradise",
 			data.font,
+			40,
 			[](Game& game) { game.gameSettings.appleBonus = BONUS_PARADISE; game.gameSettings.timeInterval = TIME_INTERVAL_PARADISE; }
 		);
 		SetTextOrigin(paradise.text, ETextOrigin::Center);
@@ -61,6 +62,7 @@ namespace SnakeGame
 			easy,
 			"Easy",
 			data.font,
+			40,
 			[](Game& game) { game.gameSettings.appleBonus = BONUS_EASY; game.gameSettings.timeInterval = TIME_INTERVAL_EASY; }
 		);
 		SetTextOrigin(easy.text, ETextOrigin::Center);
@@ -71,6 +73,7 @@ namespace SnakeGame
 			normal,
 			"Normal",
 			data.font,
+			40,
 			[](Game& game) { game.gameSettings.appleBonus = BONUS_NORMAL; game.gameSettings.timeInterval = TIME_INTERVAL_NORMAL; }
 		);
 		SetTextOrigin(normal.text, ETextOrigin::Center);
@@ -81,6 +84,7 @@ namespace SnakeGame
 			hard,
 			"Hard",
 			data.font,
+			40,
 			[](Game& game) { game.gameSettings.appleBonus = BONUS_HARD; game.gameSettings.timeInterval = TIME_INTERVAL_HARD; }
 		);
 		SetTextOrigin(hard.text, ETextOrigin::Center);
@@ -91,6 +95,7 @@ namespace SnakeGame
 			hell,
 			"Hell",
 			data.font,
+			40,
 			[](Game& game) { game.gameSettings.appleBonus = BONUS_HELL; game.gameSettings.timeInterval = TIME_INTERVAL_HELL; }
 		);
 		SetTextOrigin(hell.text, ETextOrigin::Center);

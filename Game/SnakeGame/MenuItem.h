@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "Math.h"
+#include "Constants.h"
 #include "UtilGraphic.h"
 
 namespace SnakeGame
@@ -10,7 +11,7 @@ namespace SnakeGame
 	template<typename F>
 	struct MenuItem
 	{
-		bool onFocus;
+		bool onFocus{ false };
 		sf::Text text;
 		F callFunc;
 	};
@@ -22,9 +23,9 @@ namespace SnakeGame
 	}
 
 	template<typename F>
-	void InitMenuItem(MenuItem<F>& menuItem, const std::string text, const sf::Font& font, F callFunc)
+	void InitMenuItem(MenuItem<F>& menuItem, const std::string text, const sf::Font& font, const unsigned int charSize, F callFunc)
 	{
-		InitText(menuItem.text, text, font, sf::Color::White, 40);
+		InitText(menuItem.text, text, font, sf::Color::White, charSize);
 		menuItem.text.setOutlineColor(sf::Color::Green);
 		menuItem.callFunc = callFunc;
 	}
@@ -50,4 +51,6 @@ namespace SnakeGame
 
 		menuItem.text.setOutlineThickness(0);
 	}
+
+	void EditElement(std::string& playerName, sf::Font& font);
 }

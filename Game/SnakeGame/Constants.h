@@ -12,6 +12,12 @@ namespace SnakeGame
 	const int SCREEN_WIDTH_GAME = 800;
 	const int SCREEN_HEIGHT_GAME = 600;
 
+	const int SCREEN_WIDTH_EDIT = 300;
+	const int SCREEN_HEIGHT_EDIT = 100;
+
+	const int SCREEN_WIDTH_POPUP = 500;
+	const int SCREEN_HEIGHT_POPUP = 300;
+
 	// Visual
 
 	const int SECTOR_SIZE = 20;
@@ -43,5 +49,6 @@ namespace SnakeGame
 	const char SYM_SEPARATE = '.';
 	const char SYM_TITLE = '=';
 	const unsigned int ROW_LENGTH = 50;
-	const std::string PLAYER_INDEX = "Player";
+	const std::string DEFAULT_PLAYER_NAME = "XYZ";
+	const int PLAYER_NAME_LENGTH = 25;
 }
