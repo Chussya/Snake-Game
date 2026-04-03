@@ -67,6 +67,9 @@
     <ClCompile Include="GameStateLeaderboard.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
+    <ClCompile Include="GameStatePause.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Apple.h">
@@ -118,6 +121,9 @@
       <Filter>Headers</Filter>
     </ClInclude>
     <ClInclude Include="GameStateLeaderboard.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="GameStatePause.h">
       <Filter>Headers</Filter>
     </ClInclude>
   </ItemGroup>
@@ -230,6 +236,18 @@
       <Filter>Resources\Images</Filter>
     </Image>
     <Image Include="Resources\Images\tail_up.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Resources\Images\b_head_down.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Resources\Images\b_head_left.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Resources\Images\b_head_right.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Resources\Images\b_head_up.png">
       <Filter>Resources\Images</Filter>
     </Image>
   </ItemGroup>

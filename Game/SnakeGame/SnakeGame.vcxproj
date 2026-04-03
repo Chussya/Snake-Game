@@ -165,6 +165,7 @@
     <ClCompile Include="GameStateGameOver.cpp" />
     <ClCompile Include="GameStateLeaderboard.cpp" />
     <ClCompile Include="GameStateMainMenu.cpp" />
+    <ClCompile Include="GameStatePause.cpp" />
     <ClCompile Include="GameStatePlaying.cpp" />
     <ClCompile Include="Math.cpp" />
     <ClCompile Include="MenuItem.cpp" />
@@ -184,6 +185,7 @@
     <ClInclude Include="GameStateGameOver.h" />
     <ClInclude Include="GameStateLeaderboard.h" />
     <ClInclude Include="GameStateMainMenu.h" />
+    <ClInclude Include="GameStatePause.h" />
     <ClInclude Include="GameStatePlaying.h" />
     <ClInclude Include="Math.h" />
     <ClInclude Include="MenuItem.h" />
@@ -225,6 +227,10 @@
     <Image Include="Resources\Images\body_topleft.png" />
     <Image Include="Resources\Images\body_topright.png" />
     <Image Include="Resources\Images\body_vertical.png" />
+    <Image Include="Resources\Images\b_head_down.png" />
+    <Image Include="Resources\Images\b_head_left.png" />
+    <Image Include="Resources\Images\b_head_right.png" />
+    <Image Include="Resources\Images\b_head_up.png" />
     <Image Include="Resources\Images\head_down.png" />
     <Image Include="Resources\Images\head_left.png" />
     <Image Include="Resources\Images\head_right.png" />

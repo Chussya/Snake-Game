@@ -1,5 +1,7 @@
 #pragma once
+
 #include <SFML/Graphics.hpp>
+
 #include "Snake.h"
 #include "Apple.h"
 #include "Sector.h"
@@ -29,7 +31,7 @@ namespace SnakeGame
 		// Text
 
 		sf::Text scoreText;
-		sf::Text movementNote;
+		sf::Text pauseNote;
 	};
 
 	void HandleGameStatePlayingWindowEvent(GameStatePlayingData& data, Game& game, const sf::Event event);
@@ -38,4 +40,6 @@ namespace SnakeGame
 	void DrawGameStatePlaying(GameStatePlayingData& data, Game& game, sf::RenderWindow& window);
 	void UpdateGameStatePlaying(GameStatePlayingData& data, Game& game);
 	void ShutdownGameStatePlaying(GameStatePlayingData& data, Game& game);
+
+	void PopUpPause(GameStatePlayingData& data, Game& game);
 }
