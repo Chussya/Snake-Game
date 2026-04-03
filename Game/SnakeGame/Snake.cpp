@@ -39,10 +39,14 @@ namespace SnakeGame
 	{
 		/// Init textures
 		snake.textures.resize(14);
-		assert(snake.textures[0].loadFromFile(RESOURCES_PATH + "Images/head_up.png"));
-		assert(snake.textures[1].loadFromFile(RESOURCES_PATH + "Images/head_down.png"));
-		assert(snake.textures[2].loadFromFile(RESOURCES_PATH + "Images/head_left.png"));
-		assert(snake.textures[3].loadFromFile(RESOURCES_PATH + "Images/head_right.png"));
+		//assert(snake.textures[0].loadFromFile(RESOURCES_PATH + "Images/head_up.png"));
+		//assert(snake.textures[1].loadFromFile(RESOURCES_PATH + "Images/head_down.png"));
+		//assert(snake.textures[2].loadFromFile(RESOURCES_PATH + "Images/head_left.png"));
+		//assert(snake.textures[3].loadFromFile(RESOURCES_PATH + "Images/head_right.png"));
+		assert(snake.textures[0].loadFromFile(RESOURCES_PATH + "Images/b_head_up.png"));
+		assert(snake.textures[1].loadFromFile(RESOURCES_PATH + "Images/b_head_down.png"));
+		assert(snake.textures[2].loadFromFile(RESOURCES_PATH + "Images/b_head_left.png"));
+		assert(snake.textures[3].loadFromFile(RESOURCES_PATH + "Images/b_head_right.png"));
 		assert(snake.textures[4].loadFromFile(RESOURCES_PATH + "Images/body_bottomleft.png"));
 		assert(snake.textures[5].loadFromFile(RESOURCES_PATH + "Images/body_bottomright.png"));
 		assert(snake.textures[6].loadFromFile(RESOURCES_PATH + "Images/body_horizontal.png"));

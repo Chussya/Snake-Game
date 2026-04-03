@@ -189,6 +189,9 @@ namespace SnakeGame
 			sf::Event event;
 			while (window.pollEvent(event))
 			{
+				if (event.type == sf::Event::Closed)
+					window.close();
+
 				if (event.type == sf::Event::KeyReleased)
 				{
 					if (event.key.code == sf::Keyboard::W || event.key.code == sf::Keyboard::S)

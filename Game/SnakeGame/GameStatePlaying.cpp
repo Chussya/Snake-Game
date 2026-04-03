@@ -1,8 +1,10 @@
 #include "GameStatePlaying.h"
 
 #include <cassert>
+#include <functional>
 
 #include "Game.h"
+#include "MenuItem.h"
 #include "UtilGraphic.h"
 #include "UtilBitMask.h"
 
@@ -12,15 +14,12 @@ namespace SnakeGame
 	{
 		if (event.type == sf::Event::KeyPressed)
 		{
-			if (event.key.code == sf::Keyboard::Escape)
-			{
-				SwitchGameState(game, EGameStateType::MainMenu);
-			} else if (event.key.code == sf::Keyboard::B)
+			if (event.key.code == sf::Keyboard::Escape || event.key.code == sf::Keyboard::B)
 			{
 				SwitchGameState(game, EGameStateType::MainMenu);
 			} else if (event.key.code == sf::Keyboard::P)
 			{
-				PushGameState(game, EGameStateType::Pause, true);
+				PushGameState(game, EGameStateType::Pause, false);
 			}
 			else if (!data.isKeyPressed)
 			{
@@ -59,8 +58,8 @@ namespace SnakeGame
 		// Init texts
 		InitText(data.scoreText, "SCORES:", data.font, sf::Color::White, 20);
 
-		InitText(data.movementNote, "Use arrows keys for move", data.font, sf::Color::White, 20);
-		SetTextOrigin(data.movementNote, ETextOrigin::RightTop);
+		InitText(data.pauseNote, "For pause use [P]", data.font, sf::Color::White, 20);
+		SetTextOrigin(data.pauseNote, ETextOrigin::RightTop);
 
 		/// Init window sectors
 		data.windowSectors.resize(SCREEN_HEIGHT_GAME / SECTOR_SIZE);
@@ -143,8 +142,8 @@ namespace SnakeGame
 		// Texts
 		window.draw(data.scoreText);
 		data.scoreText.setPosition(0, 0);
-		window.draw(data.movementNote);
-		data.movementNote.setPosition(SCREEN_WIDTH_GAME - 1, 0);
+		window.draw(data.pauseNote);
+		data.pauseNote.setPosition(SCREEN_WIDTH_GAME - 1, 0);
 	}
 
 	void UpdateGameStatePlaying(GameStatePlayingData& data, Game& game)
@@ -178,5 +177,116 @@ namespace SnakeGame
 	void ShutdownGameStatePlaying(GameStatePlayingData& data, Game& game)
 	{
 		// We dont need to free resources here, because they will be freed automatically
+	}
+
+	void PopUpPause(GameStatePlayingData& data, Game& game)
+	{
+		sf::RenderWindow window(sf::VideoMode(SCREEN_WIDTH_POPUP, SCREEN_HEIGHT_POPUP), "Pause Popup");
+
+		sf::Clock delayClock;
+		bool isWaiting = false;
+		const float delayTime = 3.0f;
+
+		sf::Text title;
+
+		InitText(title, "PAUSE", data.font, sf::Color::Yellow, 40);
+		SetTextOrigin(title, ETextOrigin::Center);
+		title.setPosition(SCREEN_WIDTH_POPUP / 2.f, 100);
+
+		sf::Text timer;
+		const sf::String timerText = "Return to the game in ";
+
+		InitText(timer, timerText, data.font, sf::Color::Yellow, 40);
+		SetTextOrigin(timer, ETextOrigin::Center);
+		timer.setPosition(SCREEN_WIDTH_POPUP / 2.f, 200);
+
+		MenuItem<std::function<void(Game&)>> exitMenu;
+
+		InitMenuItem<std::function<void(Game&)>>(
+			exitMenu,
+			"Menu",
+			data.font,
+			30,
+			[&](Game game) { SwitchGameState(game, EGameStateType::MainMenu); }
+		);
+		SetTextOrigin(exitMenu.text, ETextOrigin::Center);
+		exitMenu.text.setPosition(window.getSize().x / 2.f, 200);
+		OnFocus(exitMenu);
+
+		MenuItem<std::function<void()>> continueGame;
+
+		InitMenuItem<std::function<void()>>(
+			continueGame,
+			"Continue",
+			data.font,
+			30,
+			[](){}	// no need function
+		);
+		SetTextOrigin(continueGame.text, ETextOrigin::Center);
+		continueGame.text.setPosition(window.getSize().x / 2.f, 250);
+
+		window.display();
+
+		while (window.isOpen())
+		{
+			sf::Event event;
+			while (window.pollEvent(event))
+			{
+				if (event.type == sf::Event::Closed)
+					window.close();
+
+				if (event.type == sf::Event::KeyReleased)
+				{
+					if (event.key.code == sf::Keyboard::W || event.key.code == sf::Keyboard::S)
+					{
+						if (exitMenu.onFocus)
+						{
+							LostFocus(exitMenu);
+							OnFocus(continueGame);
+						} else
+						{
+							LostFocus(continueGame);
+							OnFocus(exitMenu);
+						}
+					} else if (event.key.code == sf::Keyboard::Enter)
+					{
+						if (continueGame.onFocus)
+						{
+							if (!isWaiting)
+							{
+								// Only start if not already waiting
+								delayClock.restart();
+								isWaiting = true;
+							}
+						} else
+						{
+							SwitchGameState(game, EGameStateType::MainMenu);
+						}
+					}
+				}
+			}
+			 
+			if (isWaiting && delayClock.getElapsedTime().asSeconds() >= delayTime)
+			{
+				window.close();
+			} else
+			{
+				timer.setString(timerText + std::to_string(delayTime - delayClock.getElapsedTime().asSeconds()));
+			}
+
+			window.clear();
+			window.draw(title);
+
+			if (!isWaiting)
+			{
+				DrawMenuItem(continueGame, window);
+				DrawMenuItem(exitMenu, window);
+			}
+			else
+			{
+				window.draw(timer);
+			}
+			window.display();
+		}
 	}
 }
