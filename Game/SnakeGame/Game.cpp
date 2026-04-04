@@ -5,12 +5,11 @@
 #include "Record.h"
 #include "GameStateMainMenu.h"
 #include "GameStateLeaderboard.h"
-//#include "GameStateOptions.h"
+#include "GameStateOptions.h"
 #include "GameStatePlaying.h"
 #include "GameStateComplexity.h"
 #include "GameStatePause.h"
 #include "GameStateGameOver.h"
-//#include "GameStateExitDialog.h"
 
 namespace SnakeGame
 {
@@ -164,8 +163,8 @@ namespace SnakeGame
 		}
 		case EGameStateType::Options:
 		{
-			//state.data = new GameStateOptionsData();
-			//InitGameStateOptions(*(GameStateOptionsData*)state.data, game);
+			state.data = new GameStateOptionsData();
+			InitGameStateOptions(*(GameStateOptionsData*)state.data, game);
 			break;
 		}
 		case EGameStateType::Playing:
@@ -184,12 +183,6 @@ namespace SnakeGame
 		{
 			state.data = new GameStateGameOverData();
 			InitGameStateGameOver(*(GameStateGameOverData*)state.data, game);
-			break;
-		}
-		case EGameStateType::ExitDialog:
-		{
-			//state.data = new GameStateExitDialogData();
-			//InitGameStateExitDialog(*(GameStateExitDialogData*)state.data, game);
 			break;
 		}
 		default:
@@ -222,8 +215,8 @@ namespace SnakeGame
 		}
 		case EGameStateType::Options:
 		{
-			//ShutdownGameStateOptions(*(GameStateOptionsData*)state.data, game);
-			//delete (GameStateOptionsData*)state.data;
+			ShutdownGameStateOptions(*(GameStateOptionsData*)state.data, game);
+			delete (GameStateOptionsData*)state.data;
 			break;
 		}
 		case EGameStateType::Playing:
@@ -242,12 +235,6 @@ namespace SnakeGame
 		{
 			ShutdownGameStateGameOver(*(GameStateGameOverData*)state.data, game);
 			delete (GameStateGameOverData*)state.data;
-			break;
-		}
-		case EGameStateType::ExitDialog:
-		{
-			//ShutdownGameStateExitDialog(*(GameStateExitDialogData*)state.data, game);
-			//delete (GameStateExitDialogData*)state.data;
 			break;
 		}
 		default:
@@ -279,7 +266,7 @@ namespace SnakeGame
 		}
 		case EGameStateType::Options:
 		{
-			//HandleGameStateOptionsWindowEvent(*(GameStateOptionsData*)state.data, game, event);
+			HandleGameStateOptionsWindowEvent(*(GameStateOptionsData*)state.data, game, event);
 			break;
 		}
 		case EGameStateType::Playing:
@@ -295,11 +282,6 @@ namespace SnakeGame
 		case EGameStateType::GameOver:
 		{
 			HandleGameStateGameOverWindowEvent(*(GameStateGameOverData*)state.data, game, event);
-			break;
-		}
-		case EGameStateType::ExitDialog:
-		{
-			//HandleGameStateExitDialogWindowEvent(*(GameStateExitDialogData*)state.data, game, event);
 			break;
 		}
 		default:
@@ -329,7 +311,7 @@ namespace SnakeGame
 		}
 		case EGameStateType::Options:
 		{
-			//UpdateGameStateOptions(*(GameStateOptionsData*)state.data, game, timeDelta);
+			UpdateGameStateOptions(*(GameStateOptionsData*)state.data, game);
 			break;
 		}
 		case EGameStateType::Playing:
@@ -345,11 +327,6 @@ namespace SnakeGame
 		case EGameStateType::GameOver:
 		{
 			UpdateGameStateGameOver(*(GameStateGameOverData*)state.data, game);
-			break;
-		}
-		case EGameStateType::ExitDialog:
-		{
-			//UpdateGameStateExitDialog(*(GameStateExitDialogData*)state.data, game, timeDelta);
 			break;
 		}
 		default:
@@ -379,7 +356,7 @@ namespace SnakeGame
 		}
 		case EGameStateType::Options:
 		{
-			//DrawGameStateOptions(*(GameStateOptionsData*)state.data, game, window);
+			DrawGameStateOptions(*(GameStateOptionsData*)state.data, game, window);
 			break;
 		}
 		case EGameStateType::Playing:
@@ -395,11 +372,6 @@ namespace SnakeGame
 		case EGameStateType::GameOver:
 		{
 			DrawGameStateGameOver(*(GameStateGameOverData*)state.data, game, window);
-			break;
-		}
-		case EGameStateType::ExitDialog:
-		{
-			//DrawGameStateExitDialog(*(GameStateExitDialogData*)state.data, game, window);
 			break;
 		}
 		default:

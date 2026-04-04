@@ -40,6 +40,4 @@ namespace SnakeGame
 	void DrawGameStatePlaying(GameStatePlayingData& data, Game& game, sf::RenderWindow& window);
 	void UpdateGameStatePlaying(GameStatePlayingData& data, Game& game);
 	void ShutdownGameStatePlaying(GameStatePlayingData& data, Game& game);
-
-	void PopUpPause(GameStatePlayingData& data, Game& game);
 }

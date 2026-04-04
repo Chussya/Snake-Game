@@ -1,6 +1,7 @@
 #pragma once
 #include <unordered_map>
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 
 #include "Record.h"
 #include "GameSettings.h"
@@ -39,13 +40,14 @@ namespace SnakeGame
 	struct Game
 	{
 		// Global data
-
 		int* ptrPlayerScores{ nullptr };
 
 		std::vector<GameState> gameStateStack;
 		EGameStateChangeType gameStateChangeType = EGameStateChangeType::None;
 		EGameStateType pendingGameStateType = EGameStateType::None;
 		bool pendingGameStateIsExclusivelyVisible = false;
+
+		sf::Music music;
 
 		GameSettings gameSettings;
 		std::unordered_map<std::string, int> records;
