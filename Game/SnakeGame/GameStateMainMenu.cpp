@@ -36,6 +36,22 @@ namespace SnakeGame
 
 		assert(data.font.loadFromFile(RESOURCES_PATH + "Fonts/Roboto-Light.ttf"));
 
+		/// Init music
+		if (game.music.getStatus() != sf::Music::Playing)
+		{
+			assert(game.music.openFromFile(RESOURCES_PATH + "Music/menu.ogg"));
+
+			// Music settings
+			game.music.setLoop(true);
+			game.music.setVolume(game.gameSettings.musicLoud);
+
+			// Play
+			game.music.play();
+		} else
+		{
+			game.music.setVolume(game.gameSettings.musicLoud);
+		}
+
 		// Init Texts
 
 		InitText(data.title, "SNAKE GAME", data.font, sf::Color::Yellow, 60);

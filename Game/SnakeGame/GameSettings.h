@@ -18,5 +18,8 @@ namespace SnakeGame
 		int numApples{ NUM_APPLES_DEFAULT };
 		int appleBonus{ BONUS_PARADISE };
 		float timeInterval{ TIME_INTERVAL_PARADISE };
+
+		float soundLoud{ 20.f };
+		float musicLoud{ 20.f };
 	};
 }
